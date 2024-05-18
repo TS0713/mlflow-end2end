@@ -1,31 +1,7 @@
-import setuptools
+import logging
 
-with open("README.md","r",encoding="utf-8") as f:
-    long_description = f.read()
+logging_str_format = "[%(asctime)s: %(level)s: %(module)s: %(message)s %]"
 
-__version__ = "0.0.0"
-
-REPO_NAME = "mlflow-end2end"
-AUTHOR_USER_NAME = "TS0713"
-SRC_REPO = "mlproject"
-AUTHOR_EMAIL = "tsp.0713@gmail.com"
-
-
-
-setuptools.setup(
-    name = SRC_REPO,
-    version = __version__,
-    author = AUTHOR_USER_NAME,
-    author_email = AUTHOR_EMAIL,
-    description = "A small python package for ML App",
-    long_description = long_description,
-    url = f"htpps://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
-    project_urls = {
-        "Bug Tracker": f"htpps://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}/issues"
-    },
-    package_dir={"":"src"},
-    packages = setuptools.find_packages(where = "src")
-
-)
-
-
+logging.basicConfig(format=logging_str_format,
+                    level=logging.INFO,
+                    handlers=[logging.FileHandler(log_filepath)])
